@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Undangan Walimatussafar</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #ede7df;
+    overflow-x: hidden;
+}
+
+/* OPENING SCREEN */
+.opening {
+    position: fixed;
+    inset: 0;
+    background: #000000cc;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.opening button {
+    padding: 12px 25px;
+    border: none;
+    background: #c9a75d;
+    color: white;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+/* CARD */
+.card {
+    width: 820px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    overflow: hidden;
+    position: relative;
+    animation: fadeIn 1.5s ease;
+}
+
+/* TEXTURE */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('https://www.transparenttextures.com/patterns/marble.png');
+    opacity: 0.15;
+}
+
+/* HEADER */
+.header {
+    position: relative;
+    text-align: center;
+    padding: 100px 20px 60px;
+}
+
+.curve {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 80px;
+    border-top: 2px dashed #c9a75d;
+    border-radius: 50%;
+}
+
+.lamp {
+    position: absolute;
+    top: 40px;
+    width: 70px;
+    animation: swing 3s infinite ease-in-out;
+}
+
+.lamp.left { left: 50px; }
+.lamp.right { right: 50px; }
+
+.kaaba {
+    width: 140px;
+}
+
+/* CONTENT */
+.content {
+    text-align: center;
+    padding: 30px;
+}
+
+.content h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+.to-name {
+    color: #c9a75d;
+    font-weight: bold;
+}
+
+/* FOOTER */
+.footer {
+    padding: 120px 20px 80px;
+    text-align: center;
+}
+
+.mosque {
+    width: 90%;
+    max-width: 650px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes swing {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(3deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* RESPONSIVE */
+@media(max-width: 850px){
+    .card {
+        width: 95%;
+    }
+}
+</style>
+<style>
+/* LAMPION */
+        .lamp {
+            position: fixed;
+            top: 0;
+            width: 70px;
+            z-index: 10;
+            animation: swing 3s infinite ease-in-out;
+        }
+
+        .lamp.left { left: 10px; }
+        .lamp.right { right: 10px; }
+
+        @keyframes swing {
+            0% { transform: rotate(3deg); }
+            50% { transform: rotate(-3deg); }
+            100% { transform: rotate(3deg); }
+        }
+
+        .page {
+            width: 500px;
+            margin: 30px auto;
+            padding: 40px;
+            position: relative;
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* BACKGROUND KA'BAH */
+        .page::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1591608515923-1b7d5c6d3b3b?auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+            opacity: 0.15;
+        }
+
+        /* OVERLAY PUTIH */
+        .page::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 250, 240, 0.9);
+        }
+
+        /* KONTEN DI ATAS */
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            color: #2f4f2f;
+        }
+
+        .title {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .image {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image img {
+            width: 300px;
+            border-radius: 12px;
+            border: 3px solid #d4af37;
+        }
+
+        .content {
+            text-align: center;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #000;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .names {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .divider {
+            margin: 20px auto;
+            width: 60%;
+            border-top: 1px solid #d4af37;
+        }
+    </style>
+</head>
+
+<body>
+<!-- AUDIO -->
+<audio id="music" loop>
+    <source src="Music\videoplayback.weba" type="audio/webm">
+</audio>
+<!-- OPENING -->
+<div class="opening" id="opening">
+    <h2>Undangan Walimatussafar</h2>
+    <p>Kepada Yth:</p>
+    <p class="to-name" id="guestName">Tamu Undangan</p>
+    <button onclick="openInvitation()">Buka Undangan</button>
+</div>
+
+
+
+<!-- MAIN -->
+<div class="card">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="curve"></div>
+
+        <img class="lamp left" src="https://pngimg.com/uploads/lantern/lantern_PNG25.png">
+        <img class="lamp right" src="https://pngimg.com/uploads/lantern/lantern_PNG25.png">
+
+
+    </div>
+
+<!-- HALAMAN DEPAN -->
+<div class="page">
+    <div class="content-wrapper">
+
+        <h2>Undangan</h2>
+        <h1 class="title">Walimatus Safar</h1>
+
+        <div class="image">
+            <img src="Images\WhatsApp Image 2026-03-28 at 13.10.19.jpeg" alt="Foto">
+        </div>
+
+        <div class="content">
+            Dalam rangka keberangkatan ibadah <span class="highlight">HAJI</span><br>
+            <em>Kami Berdua</em><br><br>
+
+            Pada hari <span class="highlight">Sabtu, 11 April 2026</span><br>
+            Pukul: <span class="highlight">10.00 - 12.00</span>
+	<div id="countdown" style="margin-top:20px; font-size:20px; font-weight:bold;"></div>
+
+<br><br>
+            Kediaman: <span class="highlight">Pak Aris</span><br>
+            Jl Pepaya V No 42 RT 01 RW 05<br>
+            Kranji Bekasi Barat
+
+<iframe 
+src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1983.1334422425255!2d106.9803211!3d-6.2285023!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698c6b751f6875%3A0x475de67af45695d4!2sJl.%20Pepaya%205%20No.43%2C%20RT.001%2FRW.005%2C%20Kranji%2C%20Kec.%20Bekasi%20Bar.%2C%20Kota%20Bks%2C%20Jawa%20Barat%2017135!5e0!3m2!1sid!2sid!4v1774684257453!5m2!1sid!2sid"    width="100%" 
+    height="250" 
+    style="border:0; border-radius:12px;"
+    allowfullscreen="" 
+    loading="lazy">
+</iframe>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="footer">
+            Hormat Kami<br>
+            <div class="names">
+                Bpk ARIS KUSTIAWAN<br>
+                dan<br>
+                Ibu FAJARWATI CAHYANINGTYAS
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- HALAMAN ISI -->
+<div class="page">
+    <div class="content-wrapper">
+
+        <div class="content">
+            <em>
+                "Dan bagi Allah wajib atas manusia pergi haji bagi yang mampu..."
+                <br>(QS. Ali-Imran: 97)
+            </em>
+
+            <h1 class="title">Walimatus Safar</h1>
+
+            <div class="image">
+                <img src="Images\WhatsApp Image 2026-03-28 at 13.10.19.jpeg" alt="Foto">
+            </div>
+
+            <p>
+                Assalamu’alaikum Warahmatullahi Wabarakatuh,<br><br>
+
+                Dengan memohon rahmat dan ridho Allah SWT,
+                kami bermaksud mengundang Bapak/Ibu/Saudara/i
+                untuk hadir dalam acara <span class="highlight">Walimatus Safar</span>
+                dalam rangka keberangkatan kami menunaikan
+                <span class="highlight">Ibadah Haji</span>.<br><br>
+
+                Merupakan suatu kehormatan bagi kami apabila
+                Bapak/Ibu/Saudara/i berkenan hadir serta memberikan doa restu
+                agar perjalanan ibadah kami diberi kelancaran,
+                kesehatan, keselamatan, dan menjadi
+                <span class="highlight">Haji yang mabrur</span>.
+            </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="footer">
+            Hormat Kami<br>
+            <div class="names">
+                Bpk ARIS KUSTIAWAN<br>
+                dan<br>
+                Ibu FAJARWATI CAHYANINGTYAS
+            </div>
+            <br>
+            Wassalamu’alaikum Warahmatullahi Wabarakatuh
+        </div>
+
+    </div>
+</div>
+    <!-- FOOTER -->
+<div class="footer">
+    <img class="mecca" src="Images\pngtree-3d-illustration-of-authentic-islamic-pilgrimage-kaaba-on-transparent-background-png-image_12628717-removebg-preview.png">
+</div>
+</div>
+
+<script>
+// ambil nama dari URL
+const urlParams = new URLSearchParams(window.location.search);
+const name = urlParams.get('to');
+
+if(name){
+    document.getElementById("guestName").innerText = name;
+}
+
+// buka undangan
+function openInvitation(){
+    document.getElementById("opening").style.display = "none";
+    document.getElementById("music").play();
+}
+
+// COUNTDOWN
+const eventDate = new Date("April 11, 2026 10:00:00").getTime();
+
+const countdownFunction = setInterval(function() {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+        days + " Hari " + hours + " Jam " + minutes + " Menit " + seconds + " Detik";
+
+    if (distance < 0) {
+        clearInterval(countdownFunction);
+        document.getElementById("countdown").innerHTML = "Acara Sedang Berlangsung";
+    }
+}, 1000);
+</script>
+
+</body>
+</html>
