@@ -260,9 +260,9 @@ img, iframe {
             Pukul: <span class="highlight">10.00 - 12.00</span>
 	<div id="countdown" style="margin-top:20px; font-size:20px; font-weight:bold;"></div>
 <div style="margin-top:20px; text-align:center;">
-    <button onclick="addToPhoneCalendar()" 
+    <button onclick="addToCalendar()" 
         style="padding:12px 20px; background:#2f4f2f; color:#fff; border:none; border-radius:20px;">
-        📅 Simpan ke Kalender HP
+        📅 Tambah ke Kalender
     </button>
 </div>
 <br><br>
@@ -383,26 +383,33 @@ const countdownFunction = setInterval(function() {
     }
 }, 1000);
 
-function addToPhoneCalendar() {
-    const icsContent = `
-BEGIN:VCALENDAR
-VERSION:2.0
-BEGIN:VEVENT
-SUMMARY:Walimatus Safar - Bpk Aris Kustiawan
-DTSTART:20260411T030000Z
-DTEND:20260411T050000Z
-LOCATION:Jl Pepaya V No 42 RT 01 RW 05, Kranji Bekasi Barat
-DESCRIPTION:Acara Walimatus Safar dalam rangka keberangkatan ibadah Haji.
-END:VEVENT
-END:VCALENDAR
-`;
+function addToCalendar() {
+    const start = "20260411T100000";
+    const end = "20260411T120000";
 
-    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "walimatus_safar.ics";
-    link.click();
-}</script>
+    const title = encodeURIComponent("Walimatus Safar - Bpk Aris Kustiawan");
+    const location = encodeURIComponent("Jl Pepaya V No 42 RT 01 RW 05, Kranji Bekasi Barat");
+    const details = encodeURIComponent("Acara Walimatus Safar dalam rangka keberangkatan ibadah Haji.");
+
+    const isAndroid = /Android/i.test(navigator.userAgent);
+    const isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (isAndroid) {
+        // ✅ langsung buka Google Calendar (auto isi)
+        const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${details}&location=${location}`;
+        window.open(url, "_blank");
+    } else if (isiOS) {
+        // ⚠️ iPhone → buka kalender (user klik save)
+        const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${details}&location=${location}`;
+        window.open(url, "_blank");
+    } else {
+        // fallback desktop
+        const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${details}&location=${location}`;
+        window.open(url, "_blank");
+    }
+}
+
+</script>
 
 </body>
 </html>
