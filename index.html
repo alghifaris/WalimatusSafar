@@ -210,7 +210,6 @@ img, iframe {
     100% { transform: rotate(3deg); }
 }
 
-
 </style>
 </head>
 
@@ -260,7 +259,12 @@ img, iframe {
             Pada hari <span class="highlight">Sabtu, 11 April 2026</span><br>
             Pukul: <span class="highlight">10.00 - 12.00</span>
 	<div id="countdown" style="margin-top:20px; font-size:20px; font-weight:bold;"></div>
-
+<div style="margin-top:20px; text-align:center;">
+    <button onclick="addToPhoneCalendar()" 
+        style="padding:12px 20px; background:#2f4f2f; color:#fff; border:none; border-radius:20px;">
+        📅 Simpan ke Kalender HP
+    </button>
+</div>
 <br><br>
             Kediaman: <span class="highlight">Pak Aris</span><br>
             Jl Pepaya V No 42 RT 01 RW 05<br>
@@ -378,7 +382,27 @@ const countdownFunction = setInterval(function() {
         document.getElementById("countdown").innerHTML = "Acara Sedang Berlangsung";
     }
 }, 1000);
-</script>
+
+function addToPhoneCalendar() {
+    const icsContent = `
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+SUMMARY:Walimatus Safar - Bpk Aris Kustiawan
+DTSTART:20260411T030000Z
+DTEND:20260411T050000Z
+LOCATION:Jl Pepaya V No 42 RT 01 RW 05, Kranji Bekasi Barat
+DESCRIPTION:Acara Walimatus Safar dalam rangka keberangkatan ibadah Haji.
+END:VEVENT
+END:VCALENDAR
+`;
+
+    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "walimatus_safar.ics";
+    link.click();
+}</script>
 
 </body>
 </html>
